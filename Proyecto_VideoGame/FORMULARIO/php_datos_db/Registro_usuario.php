@@ -5,14 +5,14 @@
     $nombre_completo = $_POST['nombre_completo'];
     $correo = $_POST['correo'];
     $usuario = $_POST['usuario'];
-    $password = $_POST['password'];
+    $password = $_POST['passwords'];
     //encripción de usuario y contraseña
     //fin de la encripción
-    $query= "INSERT INTO TBL_RCREDENCIAL(CRE_CNOMBRE_COMPLETO, CRE_CCORREO, CRE_CUSUARIO, CRE_CPASSWORD)
+    $query= "INSERT INTO Login_Registro(Nombre_Completo, correos, Usuarios, Passwords)
             VALUES('$nombre_completo', '$correo', '$usuario', '$password')";
        
    
-    $verificar_correo_query = "SELECT * FROM TBL_RCREDENCIAL WHERE CRE_CCORREO = '$correo'";
+    $verificar_correo_query = "SELECT * FROM Login_Registro WHERE correos = '$correo'";
     $verificar_correo = sqlsrv_query($con, $verificar_correo_query);
  
     if($verificar_correo){
@@ -24,12 +24,12 @@
       echo '
       <script>
            alert("Error, the email is already registered");
-           window.location= "../Login.php";
+           window.location= "../index.php";
         </script>
         ';
         exit();
     }else{
-        $verificar_usuario_query = "SELECT * FROM TBL_RCREDENCIAL WHERE CRE_CUSUARIO = '$usuario'";
+        $verificar_usuario_query = "SELECT * FROM Login_Registro WHERE Usuarios = '$usuario'";
     $verificar_usuario = sqlsrv_query($con, $verificar_usuario_query);
  
     if($verificar_usuario){
@@ -41,7 +41,7 @@
         echo '
         <script>
              alert("Error, the user is already registered");
-             window.location= "../Login.php";
+             window.location= "../index.php";
           </script>
           ';
           exit();
@@ -51,14 +51,14 @@
             echo '
             <script>
                alert("Successful Registration");
-               window.location= "../Login.php";
+               window.location= "../index.php";
             </script>
             ';
         }else{
             echo '
             <script>
                alert("Try Again, Unsuccessful registration");
-               window.location= "../Login.php";
+               window.location= "../index.php";
             </script>
             ';
         }

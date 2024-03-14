@@ -1,10 +1,10 @@
 <?php
 
-  session_start();
+  // session_start();
 
-  if(!isset($_SESSION['usuario'])){
-    header("location: php_paginas/bienvenida.php");
-}
+//   if(!isset($_SESSION['usuario'])){
+//     header("location: index.php");
+// }
 
 ?>
 
@@ -41,7 +41,7 @@
                <!--Formulario de Login-->
               <form action="php_datos_db/login_usuario.php" method="POST" class="formulario__login">
                 <h2>Iniciar Sesión</h2>
-                <input type="text" placeholder="Correo Electronico" name="correo" >
+                <input type="email" placeholder="Correo Electronico" name="correo" >
                 <input type="password" placeholder="Contraseña" name="passwords">
                 <button>Entrar</button>
               </form>
@@ -49,9 +49,9 @@
               <form action="php_datos_db/Registro_usuario.php" method="POST" class="formulario__Registro">
                 <h2>Registrarse</h2>
                 <input type="text" placeholder="Nombre completo" name="nombre_completo">
-                <input type="text" placeholder="Correo Electronico" name="correo">
+                <input type="email" placeholder="Correo Electronico" name="correo">
                 <input type="text" placeholder="Usuario" name="usuario">
-                <input type="text" placeholder="Contraseña" name="passwords">
+                <input type="password" placeholder="Contraseña" name="passwords">
                 <button>Registrarse</button>
               </form>
  

@@ -6,9 +6,9 @@ session_start();
  
    
     $correo = $_POST['correo'];
-    $password = $_POST['password'];
+    $password = $_POST['passwords'];
  
-    $QUERY_VERIFICACION= "SELECT * FROM TBL_RCREDENCIAL WHERE CRE_CCORREO = '$correo' AND CRE_CPASSWORD = '$password'";
+    $QUERY_VERIFICACION= "SELECT * FROM Login_Registro WHERE correos = '$correo' AND Passwords = '$password'";
     $result = sqlsrv_query($con, $QUERY_VERIFICACION);
  
 if($result){
@@ -19,14 +19,14 @@ if($result){
 }
   if($existente > 0){
     $_SESSION['usuario'] = $correo;
-    header("Location: ../../APP/index.php");
+    header("Location: ../../index.php");
   exit;
   }
   else{
     echo '
     <script>
          alert("Error, the email or password is not correct");
-         window.location= "../Login.php";
+         window.location= "../index.php";
       </script>
       ';
       exit;
@@ -35,7 +35,7 @@ if($result){
   echo '
         <script>
              alert("Error, login failed");
-             window.location= "../Login.php";
+             window.location= "../index.php";
           </script>
           ';
   exit;
